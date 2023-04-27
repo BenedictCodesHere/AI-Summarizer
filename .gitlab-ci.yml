@@ -24,7 +24,8 @@ build project:
 netlify:
   stage: deploy
   image: node:19
-  script: 
-      - npm install -g netlify-cli
-      - netlify deploy --dir=dist --prod
+  script:
+    - npm install -g netlify-cli
+    - netlify env:set VITE_RAPID_API_ARTICLE_KEY "$(cat .env | grep VITE_RAPID_API_ARTICLE_KEY | cut -d '=' -f2-)"
+    - netlify deploy --dir=dist --prod
 

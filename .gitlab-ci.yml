@@ -20,12 +20,10 @@ build project:
     paths: 
       - dist/
 
-
 netlify:
   stage: deploy
   image: node:19
   script:
     - npm install -g netlify-cli
-    - netlify env:set VITE_RAPID_API_ARTICLE_KEY "$(cat .env | grep VITE_RAPID_API_ARTICLE_KEY | cut -d '=' -f2-)"
+    - netlify env:set VITE_RAPID_API_ARTICLE_KEY "$VITE_RAPID_API_ARTICLE_KEY"
     - netlify deploy --dir=dist --prod
-

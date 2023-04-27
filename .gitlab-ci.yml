@@ -8,14 +8,14 @@ stages:
   image: node:19
   script: 
       - npm install
-      - npm test
+      - npm run test
 
 build project: 
   stage: build
   image: node:19
   script: 
       - npm install
-      - npm build
+      - npm run build
   artifacts: 
     paths: 
       - build/

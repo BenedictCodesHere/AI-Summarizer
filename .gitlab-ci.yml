@@ -18,7 +18,7 @@ build project:
       - npm run build
   artifacts: 
     paths: 
-      - build/
+      - dist/
 
 
 netlify:
@@ -26,5 +26,5 @@ netlify:
   image: node:19
   script: 
       - npm install -g netlify-cli
-      - netlify deploy --dir=build --prod
+      - netlify deploy --dir=dist --prod
 

@@ -30,10 +30,6 @@ netlify:
     - netlify deploy --dir=dist --prod
 
 
-
-    stages:
-  - deploy
-
 push to github:
   stage: push-to-github
   image: alpine/git

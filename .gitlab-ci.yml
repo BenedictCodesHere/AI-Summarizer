@@ -2,6 +2,7 @@ stages:
   - test
   - build
   - deploy
+  - push-to-github
 
 .test project: 
   stage: test
@@ -27,3 +28,22 @@ netlify:
     - npm install -g netlify-cli
     - netlify env:set VITE_RAPID_API_ARTICLE_KEY "$VITE_RAPID_API_ARTICLE_KEY"
     - netlify deploy --dir=dist --prod
+
+
+
+    stages:
+  - deploy
+
+push to github:
+  stage: push-to-github
+  image: alpine/git
+  script:
+    # Check if the repository already exists
+    - if [ ! -d "AI-Summarizer" ]; then git clone https://github.com/BenedictCodesHere/AI-Summarizer.git; fi
+    - cd AI-Summarizer
+    - rm -rf *
+    - cp -r ./* .
+    - git add .
+    - git commit -m "deploy to Github from Gitlab"
+    - git push origin master
+

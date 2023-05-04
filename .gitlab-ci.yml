@@ -11,7 +11,7 @@ stages:
       - npm install
       - npm run test
 
-build project: 
+.build project: 
   stage: build
   image: node:19
   script: 
@@ -21,7 +21,7 @@ build project:
     paths: 
       - dist/
 
-netlify:
+.netlify:
   stage: deploy
   image: node:19
   script:
@@ -30,7 +30,7 @@ netlify:
     - netlify deploy --dir=dist --prod
 
 
-push to github:
+.push to github:
   stage: push-to-github
   image: alpine/git
   script:

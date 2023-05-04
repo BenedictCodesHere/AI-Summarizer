@@ -11,7 +11,7 @@ stages:
       - npm install
       - npm run test
 
-.build project: 
+build project: 
   stage: build
   image: node:19
   script: 
@@ -21,7 +21,7 @@ stages:
     paths: 
       - dist/
 
-.netlify:
+netlify:
   stage: deploy
   image: node:19
   script:
